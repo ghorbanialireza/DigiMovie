@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "درباره ما";
+
+    var i = 1;
+    var isMan = true;
+    var isAuth = false;
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+<h2>Aboute</h2>
+
+@if (isMan == true)
+{
+    while (i <= 10)
+    {
+        <h2>hello manager</h2>
+        i++;
+    }
+}
+
+<ol>
+        @foreach (var item in Request.ServerVariables)
+        {
+       <li>@item</li>
+        }
+    </ol>
+
+<a href="@Url.Action("Home/Index")" target="_blank">
+    <h3 class="glyphicon glyphicon-home">صفحه اصلی</h3>
+</a>
+
+
+<p>Use this area to provide additional information.</p>
