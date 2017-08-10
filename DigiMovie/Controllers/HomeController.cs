@@ -39,5 +39,10 @@ namespace DigiMovie.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult ProcessForm(string firstname, string lastname)
+        {
+            return Content("salam" + "-" + firstname + "-" + lastname);
+        }
     }
 }
