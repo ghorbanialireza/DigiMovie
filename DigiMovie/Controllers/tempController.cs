@@ -14,10 +14,15 @@ namespace DigiMovie.Controllers
             return View();
         }
 
-        [Route("gallery/{year:int:range(1300,1400)}/{month:int:range(1,12)}/{message}")]
-        public ActionResult Show(int year, int month, string message)
+        //[Route("gallery/{year:int:range(1300,1400)}/{month:int:range(1,12)}/{message}")]
+        //public ActionResult Show(int year, int month, string message)
+        //{
+        //    return Content(year + "<br>" + month + "<br>" + message);
+        //}
+        [HttpPost]
+        public ActionResult ProcessForm(string firstname,string lastname)
         {
-            return Content(year + "<br>" + month + "<br>" + message);
+            return Content("salam" + firstname + "-" + lastname);
         }
     }
 }
