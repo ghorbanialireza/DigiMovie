@@ -16,7 +16,15 @@ namespace DigiMovie.Controllers
 
         [HttpPost]
         [ActionName("Index")]
-        public ActionResult ProcessForm(string firstname,string lastname)
+        public ActionResult ProcessForm(string firstname,
+            string lastname,
+            string password,
+            string address,
+            bool agreement,
+            string gender,
+            int city,
+            int fruits,
+            DateTime currentTime)
         {
             ViewBag.Message = "salam" + "-" + firstname + "-" + lastname;
             return View();
