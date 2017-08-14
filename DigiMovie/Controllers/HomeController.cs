@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
+using System.Net.Mail;
+
+using DigiMovie.Helper;
 
 namespace DigiMovie.Controllers
 {
@@ -35,14 +39,69 @@ namespace DigiMovie.Controllers
         
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
         [HttpPost]
-        public ActionResult ProcessForm(string firstname, string lastname)
+        public ActionResult SendMail()
         {
-            return Content("salam" + "-" + firstname + "-" + lastname);
+            var Name = Request.Form["Name"];
+            var Email = Request.Form["Email"];
+            var Subject = Request.Form["Subject"];
+            var Body = Request.Form["Body"];
+
+            //1-define mailmessage
+            var message = new MailMessage
+            {
+               // From=new MailAddress("alirezaghorbani230@gmail.com"),
+                From = Email.GetMailAddress(EmailType.Info),
+                Subject ="وب سایت دیجی مووی - قسمت ارتباط با ما",
+                Body=string.Format("با عرض سلام پیام جدیدی از قسمت ارتباط با ما وب سایت دیجی مووی دریافت گردید"+
+                "<hr>"+
+                "نام :"+
+                "{0}<hr>"+
+                "ایمیل :"+
+                "{1}<hr>"+
+                "موضوع :"+
+                "{2}<hr>"+
+                "پیام :"+
+                "{3}",Name,Email,Subject,Body),
+                IsBodyHtml=true
+            };
+            //message.To.Add("alirezaghorbani230@gmail.com");
+             message.To.Add(Email.GetMailName(EmailType.Info));
+
+            //2-define smptclient
+            //var smpt = new SmtpClient
+            //{
+            //    Host="smpt.gmail.com",
+            //    EnableSsl=true,
+            //    Port=587,
+            //    UseDefaultCredentials=false,
+            //    Credentials=new NetworkCredential { UserName= "alirezaghorbani230@gmail.com", Password="ghorbaniali67"}
+            //};
+            var smpt = Email.GetSmtp(EmailType.Info);
+
+            //3-send
+            try
+            {
+                smpt.Send(message);
+                //ViewBag.Message="از ارسال پیام شما متشکریم";
+                ViewBag.Status = 1;
+            }
+            catch 
+            {
+                //ViewBag.Message = "متاسفانه پیام شما ارسال نگردید، لطفا دوباره تلاش مجدد نمایید";
+                ViewBag.Status = 0;
+            }
+
+            //ViewBag.Message = "Your contact page.";
+
+            return View("Contact");
         }
+        //[HttpPost]
+        //public ActionResult ProcessForm(string firstname, string lastname)
+        //{
+        //    return Content("salam" + "-" + firstname + "-" + lastname);
+        //}
     }
 }

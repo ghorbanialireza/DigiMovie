@@ -4,6 +4,12 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
+@section styles{
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+
+}
+
+
 <address>
     One Microsoft Way<br />
     Redmond, WA 98052-6399<br />
@@ -16,7 +22,7 @@
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
 
-<form action="/Home/ProcessForm" method="post">
+@*<form action="/Home/ProcessForm" method="post">
     نام: <input type="text" name="firstname" />
     <br />
     نام خانوادگی: <input type="text" name="lastname" />
@@ -24,4 +30,60 @@
     <button type="submit">
         ثبت نام
     </button>
-</form>
+</form>*@
+
+@using (Html.BeginForm("SendMail","Home"))
+{
+    <div class="form-group">
+        @Html.Label("Name","نام :")
+        @Html.TextBox("Name", null,new {@class="form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Email", "ایمیل :")
+        @Html.TextBox("Email", null, new { @class = "form-control",type="email" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Subject", "موضوع :")
+        @Html.TextBox("Subject", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Body", "پیام :")
+        @Html.TextArea("Body", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">
+            send
+            <span class="glyphicon glyphicon-send"></span>
+        </button>
+    </div>
+}
+
+@section scripts{
+<script src="~/Scripts/toastr.min.js"></script>
+    <script>
+
+        if (@ViewBag.Status==1)
+        {
+            toastr.success("از ارسال پیام شما متشکریم", "دیجی مووی", {
+
+                "progressBar": true,
+                "positionClass": "toast-top-left",
+                "timeOut": "10000"
+            })
+        }
+        else
+        {
+            toastr.error("متاسفانه پیام شما ارسال نگردید، لطفا دوباره تلاش مجدد نماییدت", "دیجی مووی", {
+
+                "progressBar": true,
+                "positionClass": "toast-top-left",
+                "timeOut": "10000"
+            })
+        }
+       
+    </script>
+    }
