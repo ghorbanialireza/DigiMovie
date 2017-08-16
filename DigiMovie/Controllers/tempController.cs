@@ -14,6 +14,18 @@ namespace DigiMovie.Controllers
             return View();
         }
 
+        public ActionResult Test()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ActionName("Test")]
+        public ActionResult TestChangeTheme()
+        {
+           ViewBag.ThemeName = "~/Views/Shared/" + Request.Form["theme"] + ".cshtml";
+            return View();
+        }
+
         [HttpPost]
         [ActionName("Index")]
         public ActionResult ProcessForm(string firstname,

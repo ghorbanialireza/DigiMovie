@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    Layout = ViewBag.ThemeName;
+}
+
+<a href="~/Views/Shared/_Layout.cshtml"></a>
+<h2>Test</h2>
+
+@using (Html.BeginForm())
+{
+    //drop down for selecting theme //onchang="this.form.submit()"
+    @*<button type="submit">تغییر قالب</button>*@
+}

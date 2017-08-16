@@ -1,15 +1,19 @@
 ﻿@{
     ViewBag.Title = "درباره ما";
 
-    var i = 1;
-    var isMan = true;
-    var isAuth = false;
+    //var i = 1;
+    //var isMan = true;
+    //var isAuth = false;
+    
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
+@*@section styles{
+    @Styles.Render("~/Content/Superhero-bootstrap.css")
+}*@
 
-<h2>Aboute</h2>
+@*<h2>Aboute</h2>
 
 @if (isMan == true)
 {
@@ -18,7 +22,7 @@
         <h2>hello manager</h2>
         i++;
     }
-}
+}*@
 
 @*<ol>
         @foreach (var item in Request.ServerVariables)
@@ -33,3 +37,17 @@
 
 
 <p>Use this area to provide additional information.</p>
+
+
+
+@*@section styles{
+<link href="~/Content/Superhero-bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/respond.js"></script>
+    @Styles.Render("~/Content/Superhero-bootstrap.css")
+    }
+
+    @section styles{
+<script src="~/Scripts/respond.js"></script>
+        @Scripts.Render("~/Scripts/respond.js")
+@Scripts.Render("~/bundles/jqueryval")
+    }*@

@@ -45,7 +45,7 @@ namespace DigiMovie.Controllers
         public ActionResult SendMail()
         {
             var Name = Request.Form["Name"];
-            var Email = Request.Form["Email"];
+            var mail = Request.Form["Email"];
             var Subject = Request.Form["Subject"];
             var Body = Request.Form["Body"];
 
@@ -64,7 +64,7 @@ namespace DigiMovie.Controllers
                 "موضوع :"+
                 "{2}<hr>"+
                 "پیام :"+
-                "{3}",Name,Email,Subject,Body),
+                "{3}",Name,mail,Subject,Body),
                 IsBodyHtml=true
             };
             //message.To.Add("alirezaghorbani230@gmail.com");

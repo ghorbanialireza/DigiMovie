@@ -13,16 +13,16 @@ namespace DigiMovie.Helper
         public static MailAddress GetMailAddress(EmailType type)
         {
             if (type==EmailType.Mailer)
-                return new MailAddress("mailer@gmail.com");
+                return new MailAddress("alirezaghorbani230@gmail.com");
             else
-            return new MailAddress("alirezaghorbani230@gmail.com");
+            return new MailAddress("Mailer@gmail.com");
         }
         public static string GetMailName(EmailType type)
         {
             if (type==EmailType.Mailer)
-            return "mailer@gmail.com";
-            else
             return "alirezaghorbani230@gmail.com";
+            else
+            return "Mailer@gmail.com";
         }
         public static SmtpClient GetSmtp(EmailType type)
         {
