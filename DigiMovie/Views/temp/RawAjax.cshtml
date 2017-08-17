@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "RawAjax";
+}
+
+<h2>RawAjax</h2>
+
+نام: <input type="text" id="name">
+<hr />
+سن: <input type="number" id="age" />
+<hr />
+<button type="button" id="send" class="btn btn-primary">
+    ارسال
+</button>
+
+<script>
+    @*$('#send').on('click', function{
+        $.ajax({
+            url: '@Url.Action("RawAjaxGetProcess", "temp")',
+            data: {
+                name: $('#name').val(),
+                age: $('#age').val()
+            },
+            method: 'get',
+            success: function (d) {
+                alert(d);
+            }
+        })
+    });*@
+    $('#send').on('click', function{
+        $.ajax({
+            url: '@Url.Action("RawAjaxPostProcess", "temp")',
+            data: {
+                name: $('#name').val(),
+                age: $('#age').val()
+            },
+            method: 'post',
+            success: function (d) {
+                alert(d);
+            }
+        })
+    });
+</script>

@@ -26,6 +26,23 @@ namespace DigiMovie.Controllers
             return View();
         }
 
+        
+        public ActionResult RawAjax()
+        {
+            return View();
+        }
+
+
+        public ActionResult RawAjaxGetProcess()
+        {
+            return Content("SALAM " + Request.QueryString["name"] + "\n" + "Sale Tavalvod : " + (1396 - Convert.ToInt32(Request.QueryString["age"])));
+        }
+        [HttpPost]
+        public ActionResult RawAjaxPostProcess()
+        {
+            return Content("SALAM " + Request.Form["name"] + "\n" + "Sale Tavalvod : " + (1396 - Convert.ToInt32(Request.Form["age"])));
+        }
+
         [HttpPost]
         [ActionName("Index")]
         public ActionResult ProcessForm(string firstname,

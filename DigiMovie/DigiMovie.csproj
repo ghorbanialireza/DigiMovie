@@ -262,6 +262,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\temp\Test.cshtml" />
     <Content Include="Views\Shared\_OwnerLayout.cshtml" />
+    <Content Include="Views\temp\RawAjax.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
