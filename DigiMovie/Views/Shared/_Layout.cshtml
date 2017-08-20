@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - وب سایت دیجی مووی</title>
-    @*@Styles.Render("~/Content/css")*@
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/font-awesome.min.css")
     @Styles.Render("~/Content/css-admin")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
@@ -21,12 +22,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("دیجی مووی", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="/"><img src="/Images/digimovie.jpg" alt="دیجی مووی" title="وب سایت دیجی مووی" style="width:60px;height:50px;" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("تماس با ما", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("درباره ما", "About", "Home")</li>
-                    <li>@Html.ActionLink("صفحه اصلی", "Index", "Home")</li>
+                    <li><a href="@Url.Action("Contact")"><i class="fa fa-user"></i> &nbsp; تماس با ما</a></li>
+                    <li><a href="@Url.Action("About")"><i class="fa fa-info"></i> &nbsp; درباره ما</a></li>
+                    <li><a href="@Url.Action("Index")"><i class="fa fa-home"></i> &nbsp; صفحه اصلی</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

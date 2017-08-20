@@ -1,7 +1,7 @@
 ﻿
 @{
-    ViewBag.Title = "Test";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "تست";
+    //Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
     Layout = ViewBag.ThemeName;
 }
@@ -10,7 +10,24 @@
 <h2>Test</h2>
 
 @using (Html.BeginForm())
-{
-    //drop down for selecting theme //onchang="this.form.submit()"
-    @*<button type="submit">تغییر قالب</button>*@
-}
+        {
+            //drop down for selecting theme //onchang="this.form.submit()"
+        <div class="form-group">
+            @Html.Label("theme", "قالب تم :")
+            @Html.DropDownList("theme", new SelectList(new List<object>{
+                    new { id = 1, name = "Drakly-bootstrap" },
+                    new { id = 2, name = "Slate-bootstrap" },
+                    new { id = 3, name = "Solar-bootstrap" },
+                    new { id = 4, name = "Superhero-bootstrap" },
+                    new { id = 5, name = "United-bootstrap" }
+                }, "id", "name",
+                "لطفا یک قالب را انتخاب نمایید"/*, new { onchang = "this.form.submit()" }*/))
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+                <span class="fa fa-send"></span>
+                تغییر قالب
+            </button>
+        </div>
+    }

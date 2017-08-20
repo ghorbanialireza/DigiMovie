@@ -22,7 +22,8 @@ namespace DigiMovie.Controllers
             //return View("About");
             //return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
         }
-        
+
+
         public ActionResult About(/*int? id,string message*/)
         {
             //if (id == null)

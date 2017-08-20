@@ -25,10 +25,16 @@ namespace DigiMovie
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/Theme-bootstrap/Drakly-bootstrap.css",
+                      "~/Content/Theme-bootstrap/Slate-bootstrap.css",
+                      "~/Content/Theme-bootstrap/Solar-bootstrap.css",
+                      "~/Content/Theme-bootstrap/Superhero-bootstrap.css",
+                      "~/Content/Theme-bootstrap/United-bootstrap.css",
+                      "~/Content/Theme-bootstrap/font-awesome.min.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/css-admin").Include(
-                "~/Content/Superhero-bootstrap.css",
+                
                       "~/Content/site.css"));
 
             BundleTable.EnableOptimizations = true;
