@@ -8,7 +8,7 @@ namespace DigiMovie
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery", "//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js").Include(
+            bundles.Add(new ScriptBundle("~/bundles/jquery"/*, "//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"*/).Include(
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -25,20 +25,20 @@ namespace DigiMovie
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/Theme-bootstrap/Drakly-bootstrap.css",
-                      "~/Content/Theme-bootstrap/Slate-bootstrap.css",
-                      "~/Content/Theme-bootstrap/Solar-bootstrap.css",
-                      "~/Content/Theme-bootstrap/Superhero-bootstrap.css",
-                      "~/Content/Theme-bootstrap/United-bootstrap.css",
-                      "~/Content/Theme-bootstrap/font-awesome.min.css",
+                      //"~/Content/Theme-bootstrap/Drakly-bootstrap.css",
+                      //"~/Content/Theme-bootstrap/Slate-bootstrap.css",
+                      //"~/Content/Theme-bootstrap/Solar-bootstrap.css",
+                      //"~/Content/Theme-bootstrap/Superhero-bootstrap.css",
+                      //"~/Content/Theme-bootstrap/United-bootstrap.css",
+                      //"~/Content/Theme-bootstrap/font-awesome.min.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css-admin").Include(
-                
-                      "~/Content/site.css"));
+            //bundles.Add(new StyleBundle("~/Content/css-admin").Include(
 
-            BundleTable.EnableOptimizations = true;
-            bundles.UseCdn = true;
+            //          "~/Content/site.css"));
+
+            //BundleTable.EnableOptimizations = true;
+            //bundles.UseCdn = true;
         }
     }
 }

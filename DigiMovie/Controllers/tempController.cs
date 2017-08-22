@@ -14,6 +14,27 @@ namespace DigiMovie.Controllers
             return View();
         }
 
+
+        public ActionResult MvcHelper()
+        {
+            return View();
+        }
+
+        public ActionResult AjaxActionLinkProcess()
+        {
+            return Content("salam");
+        }
+
+        public ActionResult MvcBeginForm()
+        {
+            return View();
+        }
+
+        public ActionResult MvcBeginFormProcess(string FirstName)
+        {
+            return Content("salam"+FirstName);
+        }
+
         [HttpPost]
         [ActionName("Index")]
         public ActionResult IndexChangeTheme()
@@ -39,6 +60,10 @@ namespace DigiMovie.Controllers
             return View();
         }
 
+        public ActionResult RawAjaxProcess(string name)
+        {
+            return Content("salam");
+        }
 
         public ActionResult RawAjaxGetProcess()
         {

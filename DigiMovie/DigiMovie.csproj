@@ -198,11 +198,14 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\Theme-bootstrap\United-bootstrap.css" />
+    <Content Include="digimovie.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\54019.png" />
+    <Content Include="Images\digimovie.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\toastr.scss" />
@@ -216,6 +219,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -267,6 +272,9 @@
     <Content Include="Views\temp\Test.cshtml" />
     <Content Include="Views\Shared\_OwnerLayout.cshtml" />
     <Content Include="Views\temp\RawAjax.cshtml" />
+    <Content Include="Views\temp\MvcHelper.cshtml" />
+    <Content Include="Views\temp\MvcBeginForm.cshtml" />
+    <Content Include="Views\Shared\_testPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

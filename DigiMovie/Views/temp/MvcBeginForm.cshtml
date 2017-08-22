@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "MvcBeginForm";
+}
+
+<h2>MvcBeginForm</h2>
+@using (Ajax.BeginForm("MvcBeginFormProcess", "temp",new AjaxOptions {
+UpdateTargetId="res"
+}))
+{
+    <span>FirstName :</span>
+    @Html.TextBox("FirstName")
+    <input type="submit" value="send" />
+    <hr />
+    <span id="res"></span>
+}
+
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+   }

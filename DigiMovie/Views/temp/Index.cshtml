@@ -52,11 +52,21 @@
     </div>
 }*@
 
+
+<p>
+    username:
+    <input type="text" id="name" />
+</p>
+<p>
+    <input type="submit" id="send" />
+</p>
+
+
 @using (Html.BeginForm())
 {
-        <div class="form-group">
-            @Html.Label("firstname", "نام:")
-            @Html.TextBox("firstname", null, new { @class = "form-control", placeholder = "نام خود را وارد نمایید"@*, type = "number"*@, date_tooltip = "ehsan" })
+    <div class="form-group">
+        @Html.Label("firstname", "نام:")
+        @Html.TextBox("firstname", null, new { @class = "form-control", placeholder = "نام خود را وارد نمایید"@*, type = "number"*@, date_tooltip = "ehsan" })
         </div>
         <div class="form-group">
             @Html.Label("lastname", "نام خانوادگی:")
@@ -70,48 +80,67 @@
             @Html.Label("address", "آدرس:")
             @Html.TextArea("address", null, 25, 50, new { @class = "form-control" })
         </div>
-        @*<div class="form-group">
-            @Html.Label("agreement", "من شرایط عضویت در وب سایت را مطالعه نمودم:")
-            @Html.CheckBox("agreement", true, new { @class = "form-control" })
-        </div>*@
-        <div class="checkbox">
-            @Html.Label("agreement", "من شرایط عضویت در وب سایت را مطالعه نمودم")
-            @Html.CheckBox("agreement", true, new { @class = "pull-right", style = "margin-left:10px" })
-        </div>
-        <div class="checkbox">
-            @Html.Label("gender", "مرد")
-            @Html.RadioButton("gender", 1, true, new { id = "male" })
-        
-            @Html.Label("gender", "زن")
-            @Html.RadioButton("gender", 2, false, new { id = "fmale" })
-        </div>
-    <div class="form-group">
-        @Html.Label("city", "محل تولد:")
-        @Html.DropDownList("city", new SelectList(new List<object> {
-                new { id = 1, name = "تهران" },
-                new { id = 2, name = "شیراز" },
-                new { id = 3, name = "ساری" },
-                new { id = 4, name = "اردبیل" },
-                new { id = 5, name = "خرم آباد" }
-            }, "id", "name", 4, new int[1] { 1 }),
-            "لطفا یک شهر را انتخاب نمایید"/*, new { onchang = "this.form.submit()" }*/)
-    </div>
-    <div class="form-group">
-        @Html.Label("fruits", "میوه های مورد علاقه:")
-        @Html.ListBox("fruits", new SelectList(new List<object> {
-                new { id = 1, name = "سیب" },
-                new { id = 2, name = "گلابی" },
-                new { id = 3, name = "توت فرنگی" },
-                new { id = 4, name = "موز" },
-                new { id = 5, name = "هندوانه" }
-                }, "id", "name"))
-    </div>
-    @Html.Hidden("currentTime", @DateTime.Now, new { })
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">
-                <span class="glyphicon glyphicon-send"></span>
-                ثبت نام
-            </button>
-        </div>
-    }
+                    @Html.Label("agreement", "من شرایط عضویت در وب سایت را مطالعه نمودم:")
+                    @Html.CheckBox("agreement", true, new { @class = "form-control" })
+                </div>
+                <div class="checkbox">
+                    @Html.Label("agreement", "من شرایط عضویت در وب سایت را مطالعه نمودم")
+                    @Html.CheckBox("agreement", true, new { @class = "pull-right", style = "margin-left:10px" })
+                </div>
+                <div class="checkbox">
+                    @Html.Label("gender", "مرد")
+                    @Html.RadioButton("gender", 1, true, new { id = "male" })
 
+                    @Html.Label("gender", "زن")
+                    @Html.RadioButton("gender", 2, false, new { id = "fmale" })
+                </div>
+            <div class="form-group">
+                @Html.Label("city", "محل تولد:")
+                @Html.DropDownList("city", new SelectList(new List<object> {
+                        new { id = 1, name = "تهران" },
+                        new { id = 2, name = "شیراز" },
+                        new { id = 3, name = "ساری" },
+                        new { id = 4, name = "اردبیل" },
+                        new { id = 5, name = "خرم آباد" }
+                    }, "id", "name", 4, new int[1] { 1 }),
+                    "لطفا یک شهر را انتخاب نمایید"/*, new { onchang = "this.form.submit()" }*/)
+            </div>
+            <div class="form-group">
+                @Html.Label("fruits", "میوه های مورد علاقه:")
+                @Html.ListBox("fruits", new SelectList(new List<object> {
+                        new { id = 1, name = "سیب" },
+                        new { id = 2, name = "گلابی" },
+                        new { id = 3, name = "توت فرنگی" },
+                        new { id = 4, name = "موز" },
+                        new { id = 5, name = "هندوانه" }
+                        }, "id", "name"))
+            </div>
+            @Html.Hidden("currentTime", @DateTime.Now, new { })
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-send"></span>
+                        ثبت نام
+                    </button>
+                </div>
+            }
+
+@section scripts{
+    <script>
+        $('#send').on('click', function () {
+            $.ajax({
+                url: '/temp/RawAjaxProcess',
+                data{
+                    name: $('#name').val()
+                },
+                method: 'get',
+                success: function () {
+                    console.log('success');
+                }
+            });
+        });
+    </script>
+    
+    
+    
+    }

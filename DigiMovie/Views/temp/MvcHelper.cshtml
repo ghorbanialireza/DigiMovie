@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "MvcHelper";
+}
+
+<br style="line-height:2cm" /><br />
+
+@Ajax.ActionLink("send Ajax Requst", "AjaxActionLinkProcess","temp",new AjaxOptions {
+    UpdateTargetId= "result",
+    InsertionMode=InsertionMode.InsertAfter,
+    LoadingElementId="loading",
+    LoadingElementDuration=1000,
+    HttpMethod="get",
+    OnBegin= "onBegin",
+    OnComplete= "onComplete",
+    OnFailure= "onFailure",
+    OnSuccess= "onSuccess"
+
+
+
+})
+
+<br style="line-height:2cm" /><br />
+
+<img src="~/Images/54019.png" id="loading" style="display:none" />
+<h1 id="result">Reurned Data :</h1>
+
+@section scripts{
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+  <script>
+      function onBegin() {
+          console.log('begin');
+      }
+      function onComplete() {
+          console.log('complete');
+      }
+      function onFailure() {
+          console.log('failure');
+      }
+      function onSuccess() {
+          console.log('success');
+      }
+    </script>
+    }
