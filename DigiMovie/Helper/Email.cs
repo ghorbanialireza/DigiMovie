@@ -7,34 +7,27 @@ using System.Net.Mail;
 
 namespace DigiMovie.Helper
 {
-    public enum EmailType { Mailer,Info}
+    public enum EmailType { Empty,Info}
     public static class Email
     {
         public static MailAddress GetMailAddress(EmailType type)
         {
-            if (type==EmailType.Mailer)
-                return new MailAddress("alirezaghorbani230@gmail.com");
+            if (type==EmailType.Empty)
+                return new MailAddress("");
             else
-            return new MailAddress("Mailer@gmail.com");
+            return new MailAddress("alirezaghorbani230@gmail.com", "دیجی مووی");
         }
         public static string GetMailName(EmailType type)
         {
-            if (type==EmailType.Mailer)
-            return "alirezaghorbani230@gmail.com";
+            if (type==EmailType.Empty)
+            return "";
             else
-            return "Mailer@gmail.com";
+            return "alirezaghorbani230@gmail.com";
         }
         public static SmtpClient GetSmtp(EmailType type)
         {
-            if (type==EmailType.Mailer)
-                return new SmtpClient
-                {
-                    Host = "smpt.gmail.com",
-                    EnableSsl = true,
-                    Port = 587,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential { UserName = "alirezaghorbani230@gmail.com", Password = "ghorbaniali67" }
-                };
+            if (type==EmailType.Empty)
+                return new SmtpClient();
             else
             return new SmtpClient
             {
@@ -42,7 +35,7 @@ namespace DigiMovie.Helper
                 EnableSsl = true,
                 Port = 587,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential { UserName = "alirezaghorbani230@gmail.com", Password = "ghorbaniali67" }
+                Credentials = new NetworkCredential ( "alirezaghorbani230@gmail.com", "ghorbaniali67" )
             };
         }
     }

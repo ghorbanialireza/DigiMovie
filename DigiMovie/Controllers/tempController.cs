@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DigiMovie.Models;
 
 namespace DigiMovie.Controllers
 {
@@ -22,6 +23,7 @@ namespace DigiMovie.Controllers
 
         public ActionResult AjaxActionLinkProcess()
         {
+           // System.Threading.Thread.Sleep(5000);
             return Content("salam");
         }
 
@@ -35,26 +37,40 @@ namespace DigiMovie.Controllers
             return Content("salam"+FirstName);
         }
 
-        [HttpPost]
-        [ActionName("Index")]
-        public ActionResult IndexChangeTheme()
+        public ActionResult DataTransfer()
         {
-            ViewBag.ThemeName = "~/Views/Shared/" + Request.Form["theme"] + ".cshtml";
-            return View();
-        }
-        public ActionResult Test()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ActionName("Test")]
-        public ActionResult TestChangeTheme()
-        {
-           ViewBag.ThemeName = "~/Views/Shared/" + Request.Form["theme"] + ".cshtml";
+            //method-1
+            ViewData["name"] = "ali";
+
+            //method-2
+            ViewBag.age = 25;
+
+            var movie = new Movie { Id = 1, Name = "Hangovar 3" };
+            ViewData["movie"] = movie;
+            ViewBag.SelectedMovie = movie;
+
             return View();
         }
 
         
+        public ActionResult Test()
+        {
+            return View();
+        }
+        //[HttpPost]
+        //[ActionName("Test")]
+        //public ActionResult TestChangeTheme()
+        //{
+        //    ViewBag.ThemeName = "~/Views/Shared/" + Request.Form["theme"] + ".cshtml";
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult SetLayout(string layout)
+        {
+            return View("temp", "~/Views/Shared/_" + layout + ".cshtml");
+        }
+
         public ActionResult RawAjax()
         {
             return View();
@@ -62,7 +78,8 @@ namespace DigiMovie.Controllers
 
         public ActionResult RawAjaxProcess(string name)
         {
-            return Content("salam");
+            var user = new { Id=1, Name="Ali", Age=30 };
+            return Json(user, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult RawAjaxGetProcess()

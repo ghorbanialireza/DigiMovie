@@ -42,60 +42,41 @@ namespace DigiMovie.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult SetLayout(string layout)
+        {
+            return View("About", "~/Views/Shared/_" + layout + ".cshtml");
+        }
+
         [HttpPost]
         public ActionResult SendMail()
         {
-            var Name = Request.Form["Name"];
-            var mail = Request.Form["Email"];
-            var Subject = Request.Form["Subject"];
-            var Body = Request.Form["Body"];
-
-            //1-define mailmessage
             var message = new MailMessage
             {
-               // From=new MailAddress("alirezaghorbani230@gmail.com"),
                 From = Email.GetMailAddress(EmailType.Info),
                 Subject ="وب سایت دیجی مووی - قسمت ارتباط با ما",
-                Body=string.Format("با عرض سلام پیام جدیدی از قسمت ارتباط با ما وب سایت دیجی مووی دریافت گردید"+
-                "<hr>"+
-                "نام :"+
+                Body=string.Format("نام :"+
                 "{0}<hr>"+
                 "ایمیل :"+
                 "{1}<hr>"+
                 "موضوع :"+
                 "{2}<hr>"+
                 "پیام :"+
-                "{3}",Name,mail,Subject,Body),
+                "{3}", Request.Form["Name"], Request.Form["Email"], Request.Form["Subject"], Request.Form["Body"]),
                 IsBodyHtml=true
             };
-            //message.To.Add("alirezaghorbani230@gmail.com");
-             message.To.Add(Email.GetMailName(EmailType.Info));
-
-            //2-define smptclient
-            //var smpt = new SmtpClient
-            //{
-            //    Host="smpt.gmail.com",
-            //    EnableSsl=true,
-            //    Port=587,
-            //    UseDefaultCredentials=false,
-            //    Credentials=new NetworkCredential { UserName= "alirezaghorbani230@gmail.com", Password="ghorbaniali67"}
-            //};
-            var smpt = Email.GetSmtp(EmailType.Info);
-
-            //3-send
+            message.To.Add(Email.GetMailName(EmailType.Info));
+            var smtp = Email.GetSmtp(EmailType.Info);
             try
             {
-                smpt.Send(message);
-                //ViewBag.Message="از ارسال پیام شما متشکریم";
+                smtp.Send(message);
                 ViewBag.Status = 1;
             }
-            catch 
+            catch
             {
-                //ViewBag.Message = "متاسفانه پیام شما ارسال نگردید، لطفا دوباره تلاش مجدد نمایید";
                 ViewBag.Status = 0;
             }
-
-            //ViewBag.Message = "Your contact page.";
 
             return View("Contact");
         }

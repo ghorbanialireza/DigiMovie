@@ -65,25 +65,19 @@
 @section scripts{
 <script src="~/Scripts/toastr.min.js"></script>
     <script>
-
-        if (@ViewBag.Status==1)
-        {
-            toastr.success("از ارسال پیام شما متشکریم", "دیجی مووی", {
-
+       if (@ViewBag.Status==1) {
+            toastr.success("با تشکر از شما ، پیام مدنظر با موفقیت ارسال گردید.", "", {
                 "progressBar": true,
-                "positionClass": "toast-top-left",
-                "timeOut": "10000"
-            })
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
         }
-        else
-        {
-            toastr.error("متاسفانه پیام شما ارسال نگردید، لطفا دوباره تلاش مجدد نمایید", "دیجی مووی", {
-
+        else {
+            toastr.error("متاسفانه پیام شما ارسال نگردید؛ لطفا دوباره تلاش نمایید.", "", {
                 "progressBar": true,
-                "positionClass": "toast-top-left",
-                "timeOut": "10000"
-            })
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
         }
-       
     </script>
     }

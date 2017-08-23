@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "DataTransfer";
+}
+
+<h2>DataTransfer</h2>
+
+<h1 style="color:red">
+    @ViewData["name"]
+</h1>
+
+<h1 style="color:gold">
+    @ViewBag.age
+</h1>
+<h1 style="color:chocolate">
+    @(((DigiMovie.Models.Movie)ViewData["movie"]).Name)
+</h1>
+<h1 style="color:blue">
+    @(((DigiMovie.Models.Movie)ViewBag.SelectedMovie).Name)
+</h1>

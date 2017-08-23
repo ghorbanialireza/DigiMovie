@@ -6,8 +6,8 @@
     //var isAuth = false;
     
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+@*<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>*@
 
 @*@section styles{
     @Styles.Render("~/Content/Superhero-bootstrap.css")
@@ -50,6 +50,29 @@
         @Scripts.Render("~/Scripts/respond.js")
 @Scripts.Render("~/bundles/jqueryval")
     }*@
+
+
+@using (Html.BeginForm("SetLayout", "Home"))
+{
+    @Html.Label("layout", "Select Your Theme : ")
+    @Html.DropDownList(
+            "layout",
+            new List<SelectListItem> {
+                new SelectListItem {Text = "Red" , Value = "Red" },
+                new SelectListItem {Text = "Green" , Value = "Green" },
+                new SelectListItem {Text = "Blue" , Value = "Blue" }
+            },
+            new { onchange = "this.form.submit()" }
+        )
+}
+
+
+
+
+
+
+
+
 
 
 @Html.Partial("_testPartial")

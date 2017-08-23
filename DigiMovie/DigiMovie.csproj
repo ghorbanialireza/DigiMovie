@@ -181,6 +181,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -275,6 +276,15 @@
     <Content Include="Views\temp\MvcHelper.cshtml" />
     <Content Include="Views\temp\MvcBeginForm.cshtml" />
     <Content Include="Views\Shared\_testPartial.cshtml" />
+    <Content Include="Views\temp\DataTransfer.cshtml" />
+    <Content Include="Views\Shared\_LayoutUnited.cshtml" />
+    <Content Include="Views\Shared\_LayoutDrakly.cshtml" />
+    <Content Include="Views\Shared\_LayoutSlate.cshtml" />
+    <Content Include="Views\Shared\_LayoutSolar.cshtml" />
+    <Content Include="Views\Shared\_LayoutSuperhero.cshtml" />
+    <Content Include="Views\Shared\_Blue.cshtml" />
+    <Content Include="Views\Shared\_Green.cshtml" />
+    <Content Include="Views\Shared\_Red.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
