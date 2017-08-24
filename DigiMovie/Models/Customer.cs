@@ -5,8 +5,8 @@ using System.Web;
 
 namespace DigiMovie.Models
 {
-	public class Movie
-	{
+    public class Customer
+    {
         public int Id { get; set; }
         public string Name { get; set; }
     }

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<DigiMovie.Models.Movie>
+    @*@model DigiMovie.Models.Movie*@
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>@Model.Name</h2>
+
+<h2>@Model.Id</h2>*@
+
+<ul>  
+@foreach (DigiMovie.Models.Movie movie in Model)
+{
+    <li>@movie.Id</li>
+    <li>@movie.Name</li>
+}
+</ul>
