@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Mail;
 
 using DigiMovie.Helper;
+using DigiMovie.Models;
 
 namespace DigiMovie.Controllers
 {
@@ -40,6 +41,20 @@ namespace DigiMovie.Controllers
         
         public ActionResult Contact()
         {
+            //var context = new ResturanEntities() {
+            //    context.Foods;
+            //};
+
+            //var a = from f in Context.Foods
+            //Select f;
+
+            //var a = from f in Context.Foods
+            //where f.NumberAvailable>2
+            //orderby f.Name descending
+            //Select f;
+
+
+
             return View();
         }
 
