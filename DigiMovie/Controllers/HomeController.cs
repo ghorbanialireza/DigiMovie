@@ -45,6 +45,16 @@ namespace DigiMovie.Controllers
             //    context.Foods;
             //};
 
+            //var a = context.Foods.Find(1);
+
+            //var a = context.Foods.SingleorDefult(f=>f.Id==10);
+
+            //var a = context.Foods.Count(f => f.IsExsist == true);
+
+            //var a = context.Foods.Distinct();
+
+            //var a = Context.Foods.Max(f => f.NumberAvailable);
+
             //var a = from f in Context.Foods
             //Select f;
 
@@ -55,7 +65,7 @@ namespace DigiMovie.Controllers
 
 
 
-            return View();
+            return View(a);
         }
 
         [HttpPost]

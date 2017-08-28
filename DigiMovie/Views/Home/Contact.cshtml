@@ -1,4 +1,6 @@
-﻿@*@model IEnumerable<DigiMovie.Models.Foods>*@
+﻿@*@model IEnumerable<DigiMovie.Models.Food>*@
+@*@model int*@
+@*@model DigiMovie.Models.Food*@
 @{
     ViewBag.Title = "تماس با ما";
 }
@@ -23,10 +25,12 @@
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
 
-@foreach (var item in Model)
+@*<h1>@Model.Name</h1>*@
+
+@*@foreach (var item in Model)
 {
     <p>@item.Name</p>
-}
+}*@
 
 
 @*<form action="/Home/ProcessForm" method="post">
