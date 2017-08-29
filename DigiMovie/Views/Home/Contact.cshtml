@@ -1,4 +1,5 @@
 ﻿@*@model IEnumerable<DigiMovie.Models.Food>*@
+@*@model IEnumerable<Dynamic>*@
 @*@model int*@
 @*@model DigiMovie.Models.Food*@
 @{
@@ -28,9 +29,10 @@
 @*<h1>@Model.Name</h1>*@
 
 @*@foreach (var item in Model)
-{
-    <p>@item.Name</p>
-}*@
+    {
+        <p>@item.Name</p>
+            <p>@item.Id &nbsp;&nbsp;-&nbsp;&nbsp; @item.Name</p>
+    }*@
 
 
 @*<form action="/Home/ProcessForm" method="post">

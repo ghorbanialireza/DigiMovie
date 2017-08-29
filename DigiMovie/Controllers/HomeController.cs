@@ -43,9 +43,25 @@ namespace DigiMovie.Controllers
         {
             //var context = new ResturanEntities() {
             //    context.Foods;
-            //};
+            //var a = Context.Foods.select(f => f.Name);
+
+            //var a = Context.Foods.select(f => new { f.Id, f.Name });
+
+            //var a = Context.Foods.Take(2);
+
+            //var a = Context.Foods.Skip(2);
+
+            //var a = Context.Foods.OrderbyDescending(f => f.Name).Skip(2);
+
+            //var a = Context.Foods.Where(f => f.Name == "املت");
+
+            //var a = Context.Foods.Where(f => f.NumberAvailable > 0);
+
+            //var a = Context.Foods.Where(f => f.IsExsist == true);
 
             //var a = context.Foods.Find(1);
+
+            //var a = context.Foods.Single(f=>f.Id==5);
 
             //var a = context.Foods.SingleorDefult(f=>f.Id==10);
 
@@ -63,7 +79,7 @@ namespace DigiMovie.Controllers
             //orderby f.Name descending
             //Select f;
 
-
+            //};
 
             return View(a);
         }
