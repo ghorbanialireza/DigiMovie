@@ -11,5 +11,10 @@ namespace DigiMovie.Models
         public string Name { get; set; }
         public bool IsExsist { get; set; }
         public string Description { get; set; }
+        public Nullable<int> NumberAvailable{ get; set; }
+        public Nullable<int> CategoryId { get; set; }
+
+
+        public virtual Category { get; set; }
     }
 }

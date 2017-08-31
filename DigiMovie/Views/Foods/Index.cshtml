@@ -1,0 +1,26 @@
+﻿@using DigiMovie.Models
+@model IEnumerable<Food>
+@{
+    ViewBag.Title = "نمایش غذاها";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-bordered table-hover table-responsive table-striped">
+    <tr>
+        <th style="text-align:right">نام</th>
+        <th style="text-align:right">تعداد موجود</th>
+        <th style="text-align:right">نمایش جزئیات</th>
+        <th style="text-align:right">تعداد موجود</th>
+        <th style="text-align:right">تعداد موجود</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.NumberAvailable</td>
+            <td>@Html.ActionLink("نمایش", "Details", "Foods",new { id=item.Id},null)</td>
+
+        </tr>
+    }
+</table>

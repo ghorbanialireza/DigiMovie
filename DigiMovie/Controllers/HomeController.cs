@@ -42,7 +42,13 @@ namespace DigiMovie.Controllers
         public ActionResult Contact()
         {
             //var context = new ResturanEntities() {
-            //    context.Foods;
+            //  var a  context.Foods;
+
+            //foreach (var item in context.Foods)
+            //{
+
+            //}
+
             //var a = Context.Foods.select(f => f.Name);
 
             //var a = Context.Foods.select(f => new { f.Id, f.Name });
@@ -79,9 +85,17 @@ namespace DigiMovie.Controllers
             //orderby f.Name descending
             //Select f;
 
+            //foreach (var item in Context.categories.Find(1).Foods)
+            //{
+            //    ;
+            //}
+
+            //var food = context.Foods.Find(3);
+            //var categoryName = food.Category.Name;
+
             //};
 
-            return View(a);
+            return new EmptyResult();
         }
 
         [HttpPost]
