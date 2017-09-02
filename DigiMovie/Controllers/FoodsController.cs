@@ -8,8 +8,13 @@ using System.Net;
 
 namespace DigiMovie.Controllers
 {
+
     public class FoodsController : Controller
     {
+        public FoodsController()
+        {
+
+        }
         public ActionResult Index()
         {
             var db = new ResturanEntities() { };
@@ -25,18 +30,68 @@ namespace DigiMovie.Controllers
         }
         public ActionResult Creat()
         {
-            var db = new ResturanEntities() { };
-            return View(db.Foods);
+            var food = new Food
+            {
+                Name = "کتلت",
+                IsExsist = true,
+                NumberAvailable = 125,
+                Description = "خوشمزه",
+                CategoryId = 4
+            };
+
+            try
+            {
+                var db = new ResturanEntities();
+                db.Foods.Add(food);
+                db.SaveChang();
+                //throw new Exception();
+                TempData["CreatStat"] = 1;
+                //ViewBag.Stat = 1;
+            }
+            catch
+            {
+                TempData["CreatStat"] = 0;
+                //ViewBag.Stat = 0;
+            }
+            return RedirectToAction("Index");
         }
-        public ActionResult Delete()
+        public ActionResult Delete(int id)
         {
+            try
+            {
             var db = new ResturanEntities() { };
-            return View(db.Foods);
+            var food = db.foods.Find(id);
+            if (food == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            db.Foods.Remove(food);
+            db.SaveChang();
+            TempData["DeleteStat"] = 1;
+            }
+            catch 
+            {
+
+                TempData["DeleteStat"] = 0;
+            }
+            return RedirectToAction("Index");
         }
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            var db = new ResturanEntities() { };
-            return View(db.Foods);
+            try
+            {
+                var db = new ResturanEntities() { };
+                var food = db.foods.Find(id);
+                if (food == null)
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                food.NumberAvailable = 600;
+                db.SaveChang();
+                TempData["EditStat"] = 1;
+            }
+            catch
+            {
+
+                TempData["EditStat"] = 0;
+            }
+            return RedirectToAction("Index");
         }
     }
 }
