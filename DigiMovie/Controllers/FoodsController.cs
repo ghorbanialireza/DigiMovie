@@ -8,21 +8,24 @@ using System.Net;
 
 namespace DigiMovie.Controllers
 {
-
+    ResturanEntities db;
     public class FoodsController : Controller
     {
         public FoodsController()
         {
-
+            db = new ResturanEntities();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
         public ActionResult Index()
         {
-            var db = new ResturanEntities() { };
             return View(db.Foods);
         }
         public ActionResult Details(int id)
         {
-            var db = new ResturanEntities() { };
             var food = db.foods.Find(id);
             if (food == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -41,17 +44,14 @@ namespace DigiMovie.Controllers
 
             try
             {
-                var db = new ResturanEntities();
                 db.Foods.Add(food);
                 db.SaveChang();
                 //throw new Exception();
                 TempData["CreatStat"] = 1;
-                //ViewBag.Stat = 1;
             }
             catch
             {
                 TempData["CreatStat"] = 0;
-                //ViewBag.Stat = 0;
             }
             return RedirectToAction("Index");
         }
@@ -59,7 +59,6 @@ namespace DigiMovie.Controllers
         {
             try
             {
-            var db = new ResturanEntities() { };
             var food = db.foods.Find(id);
             if (food == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,7 +77,6 @@ namespace DigiMovie.Controllers
         {
             try
             {
-                var db = new ResturanEntities() { };
                 var food = db.foods.Find(id);
                 if (food == null)
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
