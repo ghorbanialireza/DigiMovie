@@ -29,5 +29,11 @@ namespace DigiMovie.Models
         {
             return new ApplicationDbContext();
         }
+
+        //My Models
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
     }
 }
