@@ -15,6 +15,8 @@ namespace DigiMovie.Controllers
     {
         public ActionResult Index()
         {
+
+
             return View();
             //return Content("salam:");
             //return RedirectToAction("About");

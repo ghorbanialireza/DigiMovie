@@ -171,7 +171,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\FoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -196,13 +195,33 @@
     <Compile Include="Migrations\201709050647539_AddCategories.Designer.cs">
       <DependentUpon>201709050647539_AddCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709061629267_AddIsSubscribedToNewsLetterToCustomer.cs" />
+    <Compile Include="Migrations\201709061629267_AddIsSubscribedToNewsLetterToCustomer.Designer.cs">
+      <DependentUpon>201709061629267_AddIsSubscribedToNewsLetterToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709061645315_AddMT.cs" />
+    <Compile Include="Migrations\201709061645315_AddMT.Designer.cs">
+      <DependentUpon>201709061645315_AddMT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709061710185_AddBirthDateToCustomer.cs" />
+    <Compile Include="Migrations\201709061710185_AddBirthDateToCustomer.Designer.cs">
+      <DependentUpon>201709061710185_AddBirthDateToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709061740238_AddRefDataToMemTypes.cs" />
+    <Compile Include="Migrations\201709061740238_AddRefDataToMemTypes.Designer.cs">
+      <DependentUpon>201709061740238_AddRefDataToMemTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709061812293_AddDAToTable.cs" />
+    <Compile Include="Migrations\201709061812293_AddDAToTable.Designer.cs">
+      <DependentUpon>201709061812293_AddDAToTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Food.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -337,6 +356,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709050647539_AddCategories.resx">
       <DependentUpon>201709050647539_AddCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709061629267_AddIsSubscribedToNewsLetterToCustomer.resx">
+      <DependentUpon>201709061629267_AddIsSubscribedToNewsLetterToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709061645315_AddMT.resx">
+      <DependentUpon>201709061645315_AddMT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709061710185_AddBirthDateToCustomer.resx">
+      <DependentUpon>201709061710185_AddBirthDateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709061740238_AddRefDataToMemTypes.resx">
+      <DependentUpon>201709061740238_AddRefDataToMemTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709061812293_AddDAToTable.resx">
+      <DependentUpon>201709061812293_AddDAToTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

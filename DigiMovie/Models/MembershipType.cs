@@ -4,15 +4,21 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace DigiMovie.Models
 {
-	public class Movie
-	{
-        public int Id { get; set; }
+    public class MembershipType
+    {
+        public byte Id { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
+
+        public byte DurationInMonth { get; set; }
+
+        public short SignUpFee { get; set; }
+
+        public byte DiscountRate { get; set; }
+
     }
 }

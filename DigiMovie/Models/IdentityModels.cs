@@ -32,8 +32,14 @@ namespace DigiMovie.Models
 
         //My Models
         public DbSet<Movie> Movies { get; set; }
+
         public DbSet<Customer> Customers { get; set; }
+
         public DbSet<Category> Categories { get; set; }
+
+
+        //Below Line is un-nessecary
+        //public DbSet<Movie> Movies { get; set; }
 
     }
 }
