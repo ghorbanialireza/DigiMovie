@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "افزودن مشتری";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.Label("Name","نام :")
+        @Html.TextBox("Name",null,new { @class="form-control"})
+    </div>
+    <div class="checkbox">
+        @Html.Label("IsSubscribedToNewsLetter", "عضو خبرنامه می باشد ")
+        @Html.CheckBox("IsSubscribedToNewsLetter", false, new { @class = "pull-right",style="margin-left:10px" })
+    </div>
+    <div class="form-group">
+        @Html.Label("BirthDate", "تاریخ تولد :")
+        @Html.TextBox("BirthDate", null, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">
+        افزودن
+        <span class="glyphicon glyphicon-plus"></span>
+    </button>
+<a href="@Url.Action("Index")" class="btn btn-default">
+    بازگشت
+    <span class="glyphicon glyphicon-share"></span>
+</a>
+}

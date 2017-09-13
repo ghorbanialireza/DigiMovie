@@ -1,0 +1,43 @@
+﻿@model DigiMovie.Models.Customer
+
+@{
+    ViewBag.Title = "نمایش جزئیات";
+}
+
+<h2>@ViewBag.Title</h2>
+<br /><br />
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>نام :</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>تاریخ تولد :</th>
+            <td>
+            @Model.BirthDate
+            </td>
+        </tr>
+        <tr>
+            <th>عضو خبرنامه :</th>
+            <td>
+                @if (Model.IsSubscribedToNewsLetter)
+                {
+                    <text>بله</text>
+                }
+                else
+                {
+                    <text>خیر</text>
+                }            </td>
+        </tr>
+        <tr>
+            <th>نوع عضویت :</th>
+            <td>@Model.MembershipType.Name</td>
+        </tr>
+    </table>
+</div>
+<br /><br />
+<a href="@Url.Action("Index")" class="btn btn-default">
+    بازگشت
+    <span class="glyphicon glyphicon-share"></span>
+</a>
