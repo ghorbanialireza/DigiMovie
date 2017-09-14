@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using DigiMovie.Models;
 using System.Net;
+using DigiMovie.ViewModels;
 
 namespace DigiMovie.Controllers
 {
@@ -38,15 +39,18 @@ namespace DigiMovie.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var customersFormViewModel = new CustomersFormViewModel {
+                MembershipTypes=db.MembershipTypes
+            };
+            return View(customersFormViewModel);
         }
         [HttpPost]
-        public ActionResult Create(string Name, bool IsSubscribedToNewsLetter, DateTime BirthDate)
+        public ActionResult Create(Customer customer)
         {
-            var customer = new Customer
-            {
-                Name=Name, BirthDate=BirthDate, IsSubscribedToNewsLetter=IsSubscribedToNewsLetter, MembershipTypeId=1
-            };
+            //var customer = new Customer
+            //{
+            //    Name=Name, BirthDate=BirthDate, IsSubscribedToNewsLetter=IsSubscribedToNewsLetter, MembershipTypeId=1
+            //};
             db.Customers.Add(customer);
             db.SaveChanges();
             return RedirectToAction("Index");

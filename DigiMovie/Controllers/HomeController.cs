@@ -43,60 +43,6 @@ namespace DigiMovie.Controllers
         
         public ActionResult Contact()
         {
-            //var context = new ResturanEntities() {
-            //  var a  context.Foods;
-
-            //foreach (var item in context.Foods)
-            //{
-
-            //}
-
-            //var a = Context.Foods.select(f => f.Name);
-
-            //var a = Context.Foods.select(f => new { f.Id, f.Name });
-
-            //var a = Context.Foods.Take(2);
-
-            //var a = Context.Foods.Skip(2);
-
-            //var a = Context.Foods.OrderbyDescending(f => f.Name).Skip(2);
-
-            //var a = Context.Foods.Where(f => f.Name == "املت");
-
-            //var a = Context.Foods.Where(f => f.NumberAvailable > 0);
-
-            //var a = Context.Foods.Where(f => f.IsExsist == true);
-
-            //var a = context.Foods.Find(1);
-
-            //var a = context.Foods.Single(f=>f.Id==5);
-
-            //var a = context.Foods.SingleorDefult(f=>f.Id==10);
-
-            //var a = context.Foods.Count(f => f.IsExsist == true);
-
-            //var a = context.Foods.Distinct();
-
-            //var a = Context.Foods.Max(f => f.NumberAvailable);
-
-            //var a = from f in Context.Foods
-            //Select f;
-
-            //var a = from f in Context.Foods
-            //where f.NumberAvailable>2
-            //orderby f.Name descending
-            //Select f;
-
-            //foreach (var item in Context.categories.Find(1).Foods)
-            //{
-            //    ;
-            //}
-
-            //var food = context.Foods.Find(3);
-            //var categoryName = food.Category.Name;
-
-            //};
-
             return new EmptyResult();
         }
 

@@ -37,9 +37,9 @@ namespace DigiMovie.Models
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<MembershipType> MembershipTypes { get; set; }
 
-        //Below Line is un-nessecary
-        //public DbSet<Movie> Movies { get; set; }
+        
 
     }
 }
