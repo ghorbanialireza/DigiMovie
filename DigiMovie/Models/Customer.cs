@@ -20,7 +20,7 @@ namespace DigiMovie.Models
         public DateTime? BirthDate { get; set; }
 
 
-        #region
+        #region RelationBetweenCustomerAndMembershipType
         //This is forign key
         public byte MembershipTypeId { get; set; }
         //This is navigation property

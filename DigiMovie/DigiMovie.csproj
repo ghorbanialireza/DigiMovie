@@ -219,10 +219,31 @@
     <Compile Include="Migrations\201709140602040_AddMembershipTypesDbset.Designer.cs">
       <DependentUpon>201709140602040_AddMembershipTypesDbset.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709181459074_AddFeildsToMovie.cs" />
+    <Compile Include="Migrations\201709181459074_AddFeildsToMovie.Designer.cs">
+      <DependentUpon>201709181459074_AddFeildsToMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709181510024_AddGenreTable.cs" />
+    <Compile Include="Migrations\201709181510024_AddGenreTable.Designer.cs">
+      <DependentUpon>201709181510024_AddGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709181524527_AddRelBetweenMovieAndGenre.cs" />
+    <Compile Include="Migrations\201709181524527_AddRelBetweenMovieAndGenre.Designer.cs">
+      <DependentUpon>201709181524527_AddRelBetweenMovieAndGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709181528510_AddRelBetweenCustomerAndMembershipType.cs" />
+    <Compile Include="Migrations\201709181528510_AddRelBetweenCustomerAndMembershipType.Designer.cs">
+      <DependentUpon>201709181528510_AddRelBetweenCustomerAndMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709181532271_InsertDataInGenre.cs" />
+    <Compile Include="Migrations\201709181532271_InsertDataInGenre.Designer.cs">
+      <DependentUpon>201709181532271_InsertDataInGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -341,6 +362,8 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -381,6 +404,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709140602040_AddMembershipTypesDbset.resx">
       <DependentUpon>201709140602040_AddMembershipTypesDbset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181459074_AddFeildsToMovie.resx">
+      <DependentUpon>201709181459074_AddFeildsToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181510024_AddGenreTable.resx">
+      <DependentUpon>201709181510024_AddGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181524527_AddRelBetweenMovieAndGenre.resx">
+      <DependentUpon>201709181524527_AddRelBetweenMovieAndGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181528510_AddRelBetweenCustomerAndMembershipType.resx">
+      <DependentUpon>201709181528510_AddRelBetweenCustomerAndMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181532271_InsertDataInGenre.resx">
+      <DependentUpon>201709181532271_InsertDataInGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

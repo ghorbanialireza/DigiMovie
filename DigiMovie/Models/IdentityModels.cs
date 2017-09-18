@@ -29,8 +29,7 @@ namespace DigiMovie.Models
         {
             return new ApplicationDbContext();
         }
-
-        //My Models
+        #region MyModels
         public DbSet<Movie> Movies { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
@@ -39,7 +38,9 @@ namespace DigiMovie.Models
 
         public DbSet<MembershipType> MembershipTypes { get; set; }
 
-        
+        public DbSet<Genre> Genres { get; set; }
+
+        #endregion
 
     }
 }

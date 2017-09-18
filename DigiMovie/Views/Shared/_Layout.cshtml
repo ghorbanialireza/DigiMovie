@@ -26,9 +26,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="@Url.Action("Contact")"><i class="fa fa-user"></i> &nbsp; تماس با ما</a></li>
-                    <li><a href="@Url.Action("About")"><i class="fa fa-info"></i> &nbsp; درباره ما</a></li>
-                    <li><a href="@Url.Action("Index")"><i class="fa fa-home"></i> &nbsp; صفحه اصلی</a></li>
+                    <li><a href="@Url.Action("Contact","Home")"><i class="fa fa-envelope"></i> &nbsp; تماس با ما</a></li>
+                    <li><a href="@Url.Action("About","Home")"><i class="fa fa-info"></i> &nbsp; درباره ما</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                            مشتریان
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Create","Customers")"><i class="fa fa-user-plus"></i>&nbsp; افزودن</a></li>
+                            <li><a href="@Url.Action("Index", "Customers")"><i class="fa fa-group"></i>&nbsp; مدیریت</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> &nbsp; صفحه اصلی</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

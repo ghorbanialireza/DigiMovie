@@ -47,13 +47,87 @@ namespace DigiMovie.Controllers
         [HttpPost]
         public ActionResult Create(Customer customer)
         {
-            //var customer = new Customer
-            //{
-            //    Name=Name, BirthDate=BirthDate, IsSubscribedToNewsLetter=IsSubscribedToNewsLetter, MembershipTypeId=1
-            //};
-            db.Customers.Add(customer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.Customers.Add(customer);
+                db.SaveChanges();
+                TempData["State"]= 1;
+                return RedirectToAction("Index");
+            }
+            catch 
+            {
+                TempData["State"] = 0;
+                return RedirectToAction("Crete");
+            }
+
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var customer = db.Customers.Find(id);
+            if (customer == null)
+                return HttpNotFound();
+            var customersFormViewModel = new CustomersFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = db.MembershipTypes
+            };
+            return View(customersFormViewModel);
+        }
+        [HttpPost]
+        public ActionResult Edit(Customer customer)
+        {
+            //Metod 1
+            //var customerInDb = db.Customers.Find(customer.Id);
+            //customerInDb.Name = customer.Name;
+            //customerInDb.BirthDate = customer.BirthDate;
+            //customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+            //customerInDb.MembershipTypeId = customer.MembershipTypeId;
+            //Metod 2
+            db.Entry(customer).State = System.Data.Entity.EntityState.Modified;
+            try
+            {
+                db.SaveChanges();
+                TempData["State"] = 3;
+                return RedirectToAction("Index");
+            }
+            catch 
+            {
+                TempData["State"] = 2;
+                return RedirectToAction("Edit");
+            }
+            
+        }
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var customer = db.Customers.Find(id);
+            if (customer == null)
+                return HttpNotFound();
+            
+            return View(customer);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
+            try
+            {
+                db.SaveChanges();
+                TempData["State"] = 5;
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                TempData["State"] = 4;
+                return RedirectToAction("Delete");
+            }
+           
         }
     }
 }

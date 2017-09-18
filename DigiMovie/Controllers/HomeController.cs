@@ -43,7 +43,8 @@ namespace DigiMovie.Controllers
         
         public ActionResult Contact()
         {
-            return new EmptyResult();
+            //return new EmptyResult();
+            return View();
         }
 
         [HttpPost]

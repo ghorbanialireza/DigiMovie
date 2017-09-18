@@ -3,6 +3,11 @@
     ViewBag.Title = "افزودن مشتری";
 }
 
+@section styles{
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+}
+
+
 <h2>@ViewBag.Title</h2>
 
 
@@ -38,4 +43,15 @@
 </a>
 }
 
-
+@section scripts{
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script>
+       if (@TempData["State"] = 0) {
+            toastr.error("مشتری مورد نظر افزوده نگردید؛ لطفا دوباره تلاش نمایید.", "دیجی مووی", {
+                "progressBar": true,
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
+        }
+    </script>
+}

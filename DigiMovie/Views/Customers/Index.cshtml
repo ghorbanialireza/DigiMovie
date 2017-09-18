@@ -3,6 +3,9 @@
     ViewBag.Title = "نمایش مشتریان";
 }
 
+@section styles{
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+}
 <h2>@ViewBag.Title</h2>
 <br /><br />
 <a href="@Url.Action("Create")" class="btn btn-primary">
@@ -16,12 +19,15 @@
             <th style="text-align:right">نام</th>
             <th style="text-align:right">عضو خبرنامه می باشد؟</th>
             <th style="text-align:right">نمایش جزئیات</th>
+            <th style="text-align:right">ویرایش</th>
+            <th style="text-align:right">حذف</th>
+
 
         </tr>
         @if (!Model.Any())
         {
             <tr>
-                <td colspan="3" align="center">در حال حاضر هیچ مشتری در سیستم وجود ندارد</td>
+                <td colspan="5" align="center">در حال حاضر هیچ مشتری در سیستم وجود ندارد</td>
             </tr>
         }
         else
@@ -43,8 +49,42 @@
                     <td>
                         @Html.ActionLink("نمایش", "Details", "Customers", new { id = item.Id },null)
                     </td>
+                    <td>
+                        @Html.ActionLink("ویرایش", "Edit", "Customers", new { id = item.Id }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("حذف", "Delete", "Customers", new { id = item.Id }, null)
+                    </td>
                 </tr>
             }
         }
     </table>
 </div>
+
+
+@section scripts{
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script>
+        if (@TempData["State"] = 1) {
+            toastr.success("مشتری مورد نظر افزوده شد.", "دیجی مووی", {
+                "progressBar": true,
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
+        }
+        if (@TempData["State"] = 3) {
+            toastr.success("اطلاعات مشتری مورد نظر بروزرسانی شد.", "دیجی مووی", {
+                "progressBar": true,
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
+        }
+         if (@TempData["State"] = 5) {
+            toastr.success("اطلاعات مشتری مورد نظر بروزرسانی شد.", "دیجی مووی", {
+                "progressBar": true,
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
+        }
+    </script>
+}

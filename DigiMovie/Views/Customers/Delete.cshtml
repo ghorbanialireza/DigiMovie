@@ -1,0 +1,66 @@
+﻿@model DigiMovie.Models.Customer
+
+@{
+    ViewBag.Title = "حذف مشتری";
+}
+
+@section styles{
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+}
+<h2>@ViewBag.Title</h2>
+<br /><br />
+<h3>آیا مایل به حذف مشتری هستید؟</h3>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>نام :</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>تاریخ تولد :</th>
+            <td>
+                @Model.BirthDate
+            </td>
+        </tr>
+        <tr>
+            <th>عضو خبرنامه :</th>
+            <td>
+                @if (Model.IsSubscribedToNewsLetter)
+                {
+                    <text>بله</text>
+                }
+                else
+                {
+                    <text>خیر</text>
+                }
+            </td>
+        </tr>
+        
+    </table>
+</div>
+<br /><br />
+
+@using (Html.BeginForm())
+{
+    <button type="submit" class="btn btn-danger">
+        حذف
+        <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    <a href="@Url.Action("Index")" class="btn btn-default">
+        بازگشت
+        <span class="glyphicon glyphicon-share"></span>
+    </a>
+}
+
+@section scripts{
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script>
+       if (@TempData["State"] = 4) {
+            toastr.error("مشتری مورد نظر ویرایش نگردید؛ لطفا دوباره تلاش نمایید.", "دیجی مووی", {
+                "progressBar": true,
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
+        }
+    </script>
+}
