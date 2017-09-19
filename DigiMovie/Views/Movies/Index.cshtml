@@ -1,17 +1,86 @@
 ﻿@model IEnumerable<DigiMovie.Models.Movie>
-    @*@model DigiMovie.Models.Movie*@
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "نمایش فیلم";
 }
 
-@*<h2>@Model.Name</h2>
-
-<h2>@Model.Id</h2>*@
-
-<ul>  
-@foreach (DigiMovie.Models.Movie movie in Model)
-{
-
-    <li>@movie.Name</li>
+<h2>@ViewBag.Title</h2>
+@section styles{
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
 }
-</ul>
+<h2>@ViewBag.Title</h2>
+<br /><br />
+<a href="@Url.Action("Create")" class="btn btn-primary">
+    افزودن
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
+<br /><br />
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th style="text-align:right">نام</th>
+            <th style="text-align:right">تاریخ انتشار</th>
+            <th style="text-align:right">نمایش جزئیات</th>
+            <th style="text-align:right">ویرایش</th>
+            <th style="text-align:right">حذف</th>
+
+
+        </tr>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="5" align="center">در حال حاضر هیچ فیلمی در سیستم وجود ندارد</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>
+                       @item.DateRelseased
+                    </td>
+                    <td>
+                        @Html.ActionLink("نمایش", "Details", "Movies", new { id = item.Id }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("ویرایش", "Edit", "Movies", new { id = item.Id }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("حذف", "Delete", "Movies", new { id = item.Id }, null)
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script>
+        if (@TempData["State"] = 1) {
+            toastr.success("فیلم مورد نظر افزوده شد.", "دیجی مووی", {
+                "progressBar": true,
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
+        }
+        if (@TempData["State"] = 3) {
+            toastr.success("اطلاعات فیلم مورد نظر بروزرسانی شد.", "دیجی مووی", {
+                "progressBar": true,
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
+        }
+         if (@TempData["State"] = 5) {
+            toastr.success("اطلاعات فیلم مورد نظر حذف شد.", "دیجی مووی", {
+                "progressBar": true,
+                "timeOut": "10000",
+                "positionClass": "toast-top-left"
+            });
+        }
+    </script>
+}
+
+

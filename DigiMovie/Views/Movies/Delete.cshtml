@@ -1,8 +1,9 @@
-﻿@model DigiMovie.Models.Customer
+﻿@model DigiMovie.Models.Movie
 
 @{
-    ViewBag.Title = "حذف مشتری";
+    ViewBag.Title = "حذف فیلم";
 }
+
 
 @section styles{
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
@@ -17,25 +18,19 @@
             <td>@Model.Name</td>
         </tr>
         <tr>
-            <th>تاریخ تولد :</th>
+            <th>تاریخ تولید :</th>
             <td>
-                @Model.BirthDate
+                @Model.DateAdded
             </td>
         </tr>
         <tr>
-            <th>عضو خبرنامه :</th>
+            <th>تاریخ انتشار :</th>
             <td>
-                @if (Model.IsSubscribedToNewsLetter)
-                {
-                    <text>بله</text>
-                }
-                else
-                {
-                    <text>خیر</text>
-                }
+                @Model.DateRelseased
+               
             </td>
         </tr>
-        
+
     </table>
 </div>
 <br /><br />
@@ -64,3 +59,5 @@
         }
     </script>
 }
+
+

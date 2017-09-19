@@ -1,0 +1,38 @@
+﻿@model DigiMovie.Models.Movie
+
+@{
+    ViewBag.Title = "نمایش جزئیات";
+}
+
+<h2>@ViewBag.Title</h2>
+<br /><br />
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>نام :</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>تاریخ تولید :</th>
+            <td>
+                @Model.DateAdded
+            </td>
+        </tr>
+        <tr>
+            <th>تاریخ انتشار :</th>
+            <td>
+                @Model.DateRelseased
+               
+            </td>
+        </tr>
+        <tr>
+            <th>تعداد موجودیت :</th>
+            <td>@Model.Genre.Name</td>
+        </tr>
+    </table>
+</div>
+<br /><br />
+<a href="@Url.Action("Index")" class="btn btn-default">
+    بازگشت
+    <span class="glyphicon glyphicon-share"></span>
+</a>

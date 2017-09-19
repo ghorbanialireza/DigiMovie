@@ -9,11 +9,11 @@ using DigiMovie.ViewModels;
 
 namespace DigiMovie.Controllers
 {
-    public class CustomersController : Controller
+    public class MoviesController : Controller
     {
         #region BaseOperations
         private ApplicationDbContext db;
-        public CustomersController()
+        public MoviesController()
         {
             db = new ApplicationDbContext();
         }
@@ -24,40 +24,41 @@ namespace DigiMovie.Controllers
         #endregion
         public ActionResult Index()
         {
-            return View(db.Customers);
+            return View(db.Movies);
         }
 
         public ActionResult Details(int? id)
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var customer = db.Customers.Include("MembershipType").SingleOrDefault(c=>c.Id==id);
-            if (customer == null)
+            var movie = db.Movies.Include("Genre").SingleOrDefault(c => c.Id == id);
+            if (movie == null)
                 return HttpNotFound();
-            return View(customer);
+            return View(movie);
         }
 
         public ActionResult Create()
         {
-            var customersFormViewModel = new CustomersFormViewModel {
-                MembershipTypes=db.MembershipTypes
+            var moviesFormViewModel = new MoviesFormViewModel
+            {
+                Genres = db.Genres
             };
-            return View(customersFormViewModel);
+            return View(moviesFormViewModel);
         }
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Create(Movie movie)
         {
             try
             {
-                db.Customers.Add(customer);
+                db.Movies.Add(movie);
                 db.SaveChanges();
-                TempData["State"]= 1;
+                TempData["State"] = 1;
                 return RedirectToAction("Index");
             }
-            catch 
+            catch
             {
                 TempData["State"] = 0;
-                return RedirectToAction("Crete");
+                return RedirectToAction("Create");
             }
 
         }
@@ -66,18 +67,18 @@ namespace DigiMovie.Controllers
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var customer = db.Customers.Find(id);
-            if (customer == null)
+            var movie = db.Movies.Find(id);
+            if (movie == null)
                 return HttpNotFound();
-            var customersFormViewModel = new CustomersFormViewModel
+            var moviesFormViewModel = new MoviesFormViewModel
             {
-                Customer = customer,
-                MembershipTypes = db.MembershipTypes
+                Movie = movie,
+                Genres = db.Genres
             };
-            return View(customersFormViewModel);
+            return View(moviesFormViewModel);
         }
         [HttpPost]
-        public ActionResult Edit(Customer customer)
+        public ActionResult Edit(Movie movie)
         {
             //Metod 1
             //var customerInDb = db.Customers.Find(customer.Id);
@@ -86,36 +87,36 @@ namespace DigiMovie.Controllers
             //customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
             //customerInDb.MembershipTypeId = customer.MembershipTypeId;
             //Metod 2
-            db.Entry(customer).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(movie).State = System.Data.Entity.EntityState.Modified;
             try
             {
                 db.SaveChanges();
                 TempData["State"] = 3;
                 return RedirectToAction("Index");
             }
-            catch 
+            catch
             {
                 TempData["State"] = 2;
                 return RedirectToAction("Edit");
             }
-            
+
         }
         public ActionResult Delete(int? id)
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var customer = db.Customers.Find(id);
-            if (customer == null)
+            var movie = db.Movies.Find(id);
+            if (movie == null)
                 return HttpNotFound();
-            
-            return View(customer);
+
+            return View(movie);
         }
         [HttpPost]
         [ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
+            var movie = db.Movies.Find(id);
+            db.Movies.Remove(movie);
             try
             {
                 db.SaveChanges();
@@ -127,7 +128,7 @@ namespace DigiMovie.Controllers
                 TempData["State"] = 4;
                 return RedirectToAction("Delete");
             }
-           
+
         }
     }
 }
