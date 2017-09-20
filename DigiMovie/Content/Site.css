@@ -26,3 +26,16 @@ body{
     direction:rtl;
     font-family:'B Titr';
 }
+.validation-summary-errors {
+    color:red;
+    background-color:lightgoldenrodyellow;
+}
+.validation-summary-valid {
+    color:red;
+}
+.field-validation-error {
+    color: red;
+}
+.input-validation-error{
+    border:2px solid red;
+}

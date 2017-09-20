@@ -3,7 +3,6 @@
     ViewBag.Title = "نمایش فیلم";
 }
 
-<h2>@ViewBag.Title</h2>
 @section styles{
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
 }
@@ -28,7 +27,7 @@
         @if (!Model.Any())
         {
             <tr>
-                <td colspan="5" align="center">در حال حاضر هیچ فیلمی در سیستم وجود ندارد</td>
+                <td colspan="6" align="center">در حال حاضر هیچ فیلمی در سیستم وجود ندارد</td>
             </tr>
         }
         else
@@ -40,6 +39,7 @@
                     <td>
                        @item.DateRelseased
                     </td>
+                    
                     <td>
                         @Html.ActionLink("نمایش", "Details", "Movies", new { id = item.Id }, null)
                     </td>

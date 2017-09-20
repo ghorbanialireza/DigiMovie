@@ -10,7 +10,7 @@
 }
 <h2>@ViewBag.Title</h2>
 <br /><br />
-<h3>آیا مایل به حذف مشتری هستید؟</h3>
+<h3>آیا مایل به حذف فیلم هستید؟</h3>
 <div class="table-responsive">
     <table class="table table-bordered table-hover">
         <tr>
@@ -30,13 +30,21 @@
                
             </td>
         </tr>
+        <tr>
+            <th>تعداد موجود :</th>
+            <td>
+                @Model.NumberInStock
 
+            </td>
+        </tr>
+       
     </table>
 </div>
 <br /><br />
 
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-danger">
         حذف
         <span class="glyphicon glyphicon-remove"></span>

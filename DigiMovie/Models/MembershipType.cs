@@ -10,7 +10,7 @@ namespace DigiMovie.Models
     {
         public byte Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "لطفا نوع عضویت را وارد نمایید")]
         [StringLength(50)]
         public string Name { get; set; }
 

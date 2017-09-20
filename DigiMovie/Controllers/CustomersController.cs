@@ -45,8 +45,11 @@ namespace DigiMovie.Controllers
             return View(customersFormViewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Customer customer)
         {
+            if (ModelState.IsValid)
+            {
             try
             {
                 db.Customers.Add(customer);
@@ -57,9 +60,15 @@ namespace DigiMovie.Controllers
             catch 
             {
                 TempData["State"] = 0;
-                return RedirectToAction("Crete");
+                return RedirectToAction("Create");
             }
-
+            }
+            var customersFormViewModel = new CustomersFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = db.MembershipTypes
+            };
+            return View(customersFormViewModel);
         }
 
         public ActionResult Edit(int? id)
@@ -77,6 +86,7 @@ namespace DigiMovie.Controllers
             return View(customersFormViewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Customer customer)
         {
             //Metod 1
@@ -85,7 +95,9 @@ namespace DigiMovie.Controllers
             //customerInDb.BirthDate = customer.BirthDate;
             //customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
             //customerInDb.MembershipTypeId = customer.MembershipTypeId;
-            //Metod 2
+            if (ModelState.IsValid)
+            {
+             //Metod 2
             db.Entry(customer).State = System.Data.Entity.EntityState.Modified;
             try
             {
@@ -98,7 +110,14 @@ namespace DigiMovie.Controllers
                 TempData["State"] = 2;
                 return RedirectToAction("Edit");
             }
-            
+            }
+            var customersFormViewModel = new CustomersFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = db.MembershipTypes
+            };
+            return View(customersFormViewModel);
+
         }
         public ActionResult Delete(int? id)
         {
@@ -112,6 +131,7 @@ namespace DigiMovie.Controllers
         }
         [HttpPost]
         [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             var customer = db.Customers.Find(id);

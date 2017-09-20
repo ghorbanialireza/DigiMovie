@@ -11,8 +11,8 @@ namespace DigiMovie.Models
 	{
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage ="لطفا نام خود را وارد نمایید")]
+        [StringLength(50, ErrorMessage = "نام حداکثر می تواند 50 کاراکتر باشد")]
         public string Name { get; set; }
 
         public DateTime DateAdded { get; set; }

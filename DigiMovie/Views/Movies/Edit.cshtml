@@ -9,12 +9,22 @@
 
 
 <h2>@ViewBag.Title</h2>
+@Html.ValidationSummary("لطفا موارد زیر را بررسی نمایید:")
 
 @using (Html.BeginForm())
 {
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.Name, "نام :")
         @Html.TextBoxFor(c => c.Movie.Name, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Movie.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Movie.GenreId, "دسته بندی :")
+        @Html.DropDownListFor(c => c.Movie.GenreId,
+       new SelectList(Model.Genres, "Id", "Name"),
+       "لطفا یک مورد را انتخاب کنید",
+       new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Movie.GenreId@*, "لظفا نوع عضویت را وارد نمایید"*@)
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.DateAdded, "تاریخ تولید ")
@@ -25,15 +35,13 @@
         @Html.TextBoxFor(c => c.Movie.DateRelseased, null, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(c => c.Movie.GenreId, "تعداد موجودیت :")
-        @Html.DropDownListFor(c => c.Movie.GenreId,
-       new SelectList(Model.Genres, "Id", "Name"),
-       "لطفا یک مورد را انتخاب کنید",
-       new { @class = "form-control" })
+        @Html.LabelFor(c => c.Movie.NumberInStock, "تعداد موجود :")
+        @Html.TextBoxFor(c => c.Movie.NumberInStock, null, new { @class = "form-control" })
     </div>
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-success">
-        افزودن
-        <span class="glyphicon glyphicon-plus"></span>
+        ویرایش
+        <span class="glyphicon glyphicon-pencil"></span>
     </button>
     <a href="@Url.Action("Index")" class="btn btn-default">
         بازگشت
@@ -42,6 +50,7 @@
 }
 
 @section scripts{
+@Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/toastr.min.js"></script>
     <script>
        if (@TempData["State"] = 2) {

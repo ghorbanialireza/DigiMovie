@@ -46,20 +46,29 @@ namespace DigiMovie.Controllers
             return View(moviesFormViewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Movie movie)
         {
-            try
+            if (ModelState.IsValid)
             {
-                db.Movies.Add(movie);
-                db.SaveChanges();
-                TempData["State"] = 1;
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Movies.Add(movie);
+                    db.SaveChanges();
+                    TempData["State"] = 1;
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    TempData["State"] = 0;
+                    return RedirectToAction("Create");
+                }
             }
-            catch
+            var moviesFormViewModel = new MoviesFormViewModel
             {
-                TempData["State"] = 0;
-                return RedirectToAction("Create");
-            }
+                Genres = db.Genres
+            };
+            return View(moviesFormViewModel);
 
         }
 
@@ -78,6 +87,7 @@ namespace DigiMovie.Controllers
             return View(moviesFormViewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Movie movie)
         {
             //Metod 1
@@ -86,19 +96,28 @@ namespace DigiMovie.Controllers
             //customerInDb.BirthDate = customer.BirthDate;
             //customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
             //customerInDb.MembershipTypeId = customer.MembershipTypeId;
-            //Metod 2
-            db.Entry(movie).State = System.Data.Entity.EntityState.Modified;
-            try
+            if (ModelState.IsValid)
             {
-                db.SaveChanges();
-                TempData["State"] = 3;
-                return RedirectToAction("Index");
+                //Metod 2
+                db.Entry(movie).State = System.Data.Entity.EntityState.Modified;
+                try
+                {
+                    db.SaveChanges();
+                    TempData["State"] = 3;
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    TempData["State"] = 2;
+                    return RedirectToAction("Edit");
+                }
             }
-            catch
+            var moviesFormViewModel = new MoviesFormViewModel
             {
-                TempData["State"] = 2;
-                return RedirectToAction("Edit");
-            }
+                Movie = movie,
+                Genres = db.Genres
+            };
+            return View(moviesFormViewModel);
 
         }
         public ActionResult Delete(int? id)
@@ -113,6 +132,7 @@ namespace DigiMovie.Controllers
         }
         [HttpPost]
         [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             var movie = db.Movies.Find(id);
