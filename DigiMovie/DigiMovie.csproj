@@ -176,10 +176,13 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\tempController.cs" />
+    <Compile Include="CustomValidions\CustomerAgeValidion.cs" />
+    <Compile Include="CustomValidions\ValidionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Email.cs" />
+    <Compile Include="Helper\Enums\TypesOfMemberships.cs" />
     <Compile Include="Migrations\201709050611063_Initial.cs" />
     <Compile Include="Migrations\201709050611063_Initial.Designer.cs">
       <DependentUpon>201709050611063_Initial.cs</DependentUpon>
@@ -244,6 +247,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerAgeValidionAttribute.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

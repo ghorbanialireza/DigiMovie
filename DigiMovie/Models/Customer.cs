@@ -17,6 +17,7 @@ namespace DigiMovie.Models
 
         public bool IsSubscribedToNewsLetter { get; set; }
 
+        [CustomerAgeValidion]
         public DateTime? BirthDate { get; set; }
 
 

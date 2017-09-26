@@ -17,13 +17,16 @@ namespace DigiMovie.Models
 
         public DateTime DateAdded { get; set; }
 
+        [Required(ErrorMessage = "لطفا تاریخ انتشار خود را وارد نمایید")]
         public DateTime DateRelseased { get; set; }
 
+        [Required(ErrorMessage = "لطفا تعداد موجود خود را وارد نمایید")]
+        [Range(1,20,ErrorMessage ="تعداد می تواند از بین 1 تا 20 باشد")]
         public byte NumberInStock { get; set; }
 
         #region RelationBetweenMovieAndGenre
         //This is forign key
-        [Required]
+        [Required(ErrorMessage ="لطفا دسته بندی فیلم را انتخاب نمایید")]
         public byte GenreId { get; set; }
         //This is navigation property
         public Genre Genre { get; set; }

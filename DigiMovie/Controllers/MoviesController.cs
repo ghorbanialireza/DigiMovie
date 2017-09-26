@@ -31,7 +31,7 @@ namespace DigiMovie.Controllers
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var movie = db.Movies.Include("Genre").SingleOrDefault(c => c.Id == id);
+            var movie = db.Movies.Include("Genre").SingleOrDefault(m => m.Id == id);
             if (movie == null)
                 return HttpNotFound();
             return View(movie);
@@ -53,6 +53,7 @@ namespace DigiMovie.Controllers
             {
                 try
                 {
+                    movie.DateAdded = DateTime.Now;
                     db.Movies.Add(movie);
                     db.SaveChanges();
                     TempData["State"] = 1;
@@ -66,6 +67,7 @@ namespace DigiMovie.Controllers
             }
             var moviesFormViewModel = new MoviesFormViewModel
             {
+                Movie = movie,
                 Genres = db.Genres
             };
             return View(moviesFormViewModel);
@@ -89,19 +91,12 @@ namespace DigiMovie.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Movie movie)
-        {
-            //Metod 1
-            //var customerInDb = db.Customers.Find(customer.Id);
-            //customerInDb.Name = customer.Name;
-            //customerInDb.BirthDate = customer.BirthDate;
-            //customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
-            //customerInDb.MembershipTypeId = customer.MembershipTypeId;
+        {    
             if (ModelState.IsValid)
             {
-                //Metod 2
-                db.Entry(movie).State = System.Data.Entity.EntityState.Modified;
                 try
                 {
+                    db.Entry(movie).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     TempData["State"] = 3;
                     return RedirectToAction("Index");

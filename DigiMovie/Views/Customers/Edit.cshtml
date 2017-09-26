@@ -33,6 +33,7 @@
     <div class="form-group">
         @Html.LabelFor(c => c.Customer.BirthDate, "تاریخ تولد :")
         @Html.TextBoxFor(c => c.Customer.BirthDate, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.BirthDate)
     </div>
     
     @Html.HiddenFor(c => c.Customer.Id)
