@@ -26,6 +26,16 @@ body{
     direction:rtl;
     font-family:'B Titr';
 }
+/*Bootbox*/
+.bootbox-body {
+    margin-top: 1cm;
+    font-weight: bold;
+}
+
+.modal-footer {
+    direction: ltr;
+}
+
 .validation-summary-errors {
     color:red;
     background-color:lightgoldenrodyellow;

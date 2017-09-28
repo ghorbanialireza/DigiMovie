@@ -8,23 +8,15 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-@section styles{
+@*@section styles{
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
 
-}
+}*@
 
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+
 
 @*<h1>@Model.Name</h1>*@
 
@@ -45,7 +37,7 @@
     </button>
 </form>*@
 
-@using (Html.BeginForm("SendMail","Home"))
+@*@using (Html.BeginForm("SendMail","Home"))
 {
     <div class="form-group">
         @Html.Label("Name","نام :")
@@ -93,4 +85,4 @@
             });
         }
     </script>
-    }
+    }*@
